@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="ru">
+	<head>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width">
+		<link rel="stylesheet" href="./css/main.css?v=1628056132347">
+	</head>
+	<body>
+		<div class="site">
+			<main class="anketa">
+				<form class="anketa__form">
+					<div class="anketa__basic">
+						<div class="anketa__person-img">
+							<picture class="lozad js-lazy" data-iesrc="./images/photo1.jpg" data-alt="Bruce">
+								<source srcset="./images/photo1.jpg"/>
+							</picture>
+						</div>
+						<div class="fields-box">
+							<div class="field">
+								<input class="field-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required>
+								<label class="field-label">имя</label>
+							</div>
+							<div class="field">
+								<input class="field-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required>
+								<label class="field-label">дата рождения</label>
+							</div>
+							<div class="field">
+								<input class="field-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required>
+								<label class="field-label">город</label>
+							</div>
+							<div class="field">
+								<input class="field-input" type="text" autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required>
+								<label class="field-label">контактные данные</label>
+							</div>
+							<picture class="lozad js-lazy anketa__approved-img" data-iesrc="./images/print.png" data-alt="approved">
+								<source srcset="./images/print.png"/>
+							</picture>
+						</div>
+					</div>
+					<div class="anketa__skills">
+						<h2>Навыки</h2>
+						<div class="anketa__checkboxes-inner">
+							<label class="anketa__skill-label" for=""> 
+								<input class="checkbox" type="checkbox"><span>html5</span>
+							</label>
+							<label class="anketa__skill-label" for=""> 
+								<input class="checkbox" type="checkbox"><span>css3</span>
+							</label>
+							<label class="anketa__skill-label" for=""> 
+								<input class="checkbox" type="checkbox"><span>бэм</span>
+							</label>
+							<label class="anketa__skill-label" for=""> 
+								<input class="checkbox" type="checkbox"><span>sass</span>
+							</label>
+							<label class="anketa__skill-label" for=""> 
+								<input class="checkbox" type="checkbox"><span>less</span>
+							</label>
+							<label class="anketa__skill-label" for=""> 
+								<input class="checkbox" type="checkbox"><span>gulp</span>
+							</label>
+							<label class="anketa__skill-label" for=""> 
+								<input class="checkbox" type="checkbox"><span>vanillajs</span>
+							</label>
+							<label class="anketa__skill-label" for=""> 
+								<input class="checkbox" type="checkbox"><span>angular</span>
+							</label>
+							<label class="anketa__skill-label" for=""> 
+								<input class="checkbox" type="checkbox"><span>jquery</span>
+							</label>
+							<label class="anketa__skill-label" for=""> 
+								<input class="checkbox" type="checkbox"><span>git</span>
+							</label>
+							<label class="anketa__skill-label" for=""> 
+								<input class="checkbox" type="checkbox"><span>foundation</span>
+							</label>
+							<label class="anketa__skill-label" for=""> 
+								<input class="checkbox" type="checkbox"><span>bootstrap</span>
+							</label>
+						</div>
+					</div>
+					<div class="anketa__js">
+						<div class="anketa__js-img"><img class="anketa__js-scale" src="images/skill.png" alt="skill">
+							<div class="anketa__js-arrow-box"><img class="anketa__js-arrow" src="images/arrow.png" alt="arrow"></div>
+						</div>
+						<div class="anketa__js-info">
+							<h2>Мой уровень владения<br>Java Script</h2>
+							<div class="anketa__js-counter"></div>
+						</div>
+					</div>
+				</form>
+			</main>
+		</div>
+		<script>
+			if (!('IntersectionObserver' in window)) {
+				var script = document.createElement("script");
+				script.src = "https://raw.githubusercontent.com/w3c/IntersectionObserver/master/polyfill/intersection-observer.js";
+				document.getElementsByTagName('head')[0].appendChild(script);
+			}
+		</script>
+		<script src="./js/vendor.js?v=1628056132348"></script>
+		<script src="./js/main.js?v=1628056132348"></script>
+	</body>
+</html>
