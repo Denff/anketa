@@ -155,6 +155,7 @@
 * Качество рендеринга изображений
 * В Chrome качество фонового изображения не самое лучшее при использовании background-size
 */
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap");
 /*! normalize.css v8.0.1 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -476,7 +477,7 @@ html {
   min-height: 100vh;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
-  font-family: -apple-system, blinkmacsystemfont, "Segoe UI", roboto, oxygen, ubuntu, cantarell, "Open Sans", "Helvetica Neue", sans-serif;
+  font-family: "Roboto", sans-serif;
   scroll-behavior: smooth; }
   html.has-cursor,
   html.has-cursor * {
@@ -487,6 +488,7 @@ html {
 
 body {
   -webkit-font-smoothing: antialiased;
+  font-size: 12px;
   -webkit-text-decoration-skip: objects;
           text-decoration-skip: objects;
   text-rendering: optimizeLegibility;
@@ -494,10 +496,8 @@ body {
      -moz-text-size-adjust: 100%;
       -ms-text-size-adjust: 100%;
           text-size-adjust: 100%;
-  -webkit-tap-highlight-color: transparent;
-  font-family: "Roboto";
   color: #666666;
-  font-size: 12px; }
+  -webkit-tap-highlight-color: transparent; }
 
 main {
   -webkit-box-flex: 1;
@@ -709,39 +709,39 @@ iframe {
 
 /* stylelint-enable */
 .fields-box {
+  position: relative;
   -webkit-box-flex: 1;
       -ms-flex: 1;
-          flex: 1;
-  position: relative; }
+          flex: 1; }
 
 .field {
   position: relative;
-  padding: 6px 0 0;
-  margin-top: 9px; }
+  margin-top: 9px;
+  padding: 6px 0 0; }
   .field:first-child {
     margin-top: 5px; }
   .field:nth-child(3) {
     margin-top: 11px; }
 
 .field-label {
+  content: "";
   position: absolute;
-  content: '';
-  top: 23px;
   left: 0;
+  top: 23px;
   display: block;
+  letter-spacing: 1.2px;
   text-transform: uppercase;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
-  transition: 0.2s;
-  letter-spacing: 1.2px; }
+  transition: 0.2s; }
 
 .field-input {
-  font-family: inherit;
-  width: 100%;
+  outline: 0;
   border: 0;
   border-bottom: 2px solid #666666;
-  outline: 0;
   padding: 16px 0 8px;
+  width: 100%;
+  font-family: inherit;
   background: transparent;
   -webkit-transition: border-color 0.2s;
   -o-transition: border-color 0.2s;
@@ -764,102 +764,104 @@ iframe {
 .field-input.active ~ .field-label {
   position: absolute;
   top: 0;
-  cursor: text;
   display: block;
+  font-size: 0.7rem;
   -webkit-transition: 0.2s;
   -o-transition: 0.2s;
   transition: 0.2s;
-  font-size: 0.7rem; }
+  cursor: text; }
 
 @-webkit-keyframes click-wave {
   0% {
-    height: 19px;
+    position: relative;
+    border-radius: 10px;
     width: 19px;
-    border-radius: 10px;
-    opacity: 0.35;
-    position: relative; }
+    height: 19px;
+    opacity: 0.35; }
   100% {
-    height: 40px;
-    width: 40px;
-    border-radius: 10px;
-    margin-left: -10px;
     margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
     opacity: 0; } }
 
 @keyframes click-wave {
   0% {
-    height: 19px;
+    position: relative;
+    border-radius: 10px;
     width: 19px;
-    border-radius: 10px;
-    opacity: 0.35;
-    position: relative; }
+    height: 19px;
+    opacity: 0.35; }
   100% {
-    height: 40px;
-    width: 40px;
-    border-radius: 10px;
-    margin-left: -10px;
     margin-top: -10px;
+    margin-left: -10px;
+    border-radius: 10px;
+    width: 40px;
+    height: 40px;
     opacity: 0; } }
 
 .checkbox {
   -webkit-appearance: none;
      -moz-appearance: none;
           appearance: none;
-  border-radius: 5px;
   position: relative;
-  height: 19px;
+  top: -2px;
+  z-index: 1000;
+  margin-right: 0.5rem;
+  outline: none;
+  border: none;
+  border-radius: 5px;
   width: 19px;
+  height: 19px;
+  background: #eee;
   -webkit-transition: all 0.15s ease-out 0s;
   -o-transition: all 0.15s ease-out 0s;
   transition: all 0.15s ease-out 0s;
-  background: #eeeeee;
-  border: none;
-  cursor: pointer;
-  margin-right: 0.5rem;
-  outline: none;
-  position: relative;
-  top: -2px;
-  z-index: 1000; }
-  .checkbox:hover {
-    background: #cccccc; }
+  cursor: pointer; }
   .checkbox:checked {
     background: #0093d7; }
+  .checkbox:hover {
+    background: #ccc; }
+
+.checkbox:checked:hover {
+  background: #0093d7; }
 
 .checkbox:checked::before {
-  height: 10px;
-  width: 14px;
+  content: "";
   position: absolute;
-  top: 5px;
   left: 2px;
-  content: '';
+  top: 5px;
+  width: 14px;
+  height: 10px;
   background: url("../images/check.png") no-repeat;
-  background-size: 100%;
-  background-position: center; }
+  background-position: center;
+  background-size: 100%; }
 
 .checkbox:checked::after {
-  -webkit-animation: click-wave 0.65s;
-          animation: click-wave 0.65s;
-  background: #0093d7;
-  content: '';
-  display: block;
+  content: "";
   position: relative;
-  z-index: 100; }
+  z-index: 100;
+  display: block;
+  background: #0093d7;
+  -webkit-animation: click-wave 0.65s;
+          animation: click-wave 0.65s; }
 
 .anketa {
-  background-color: #f0f0f0;
   padding-top: 60px;
-  padding-bottom: 100px; }
+  padding-bottom: 100px;
+  background-color: #f0f0f0; }
   .anketa h2 {
     margin-top: 0;
-    font-weight: 500;
-    margin-bottom: 20px; }
+    margin-bottom: 20px;
+    font-weight: 500; }
   .anketa__form {
-    width: 660px;
-    margin: 0 auto; }
+    margin: 0 auto;
+    width: 660px; }
     @media (max-width: 767px) {
       .anketa__form {
-        width: auto;
-        margin: 10px; } }
+        margin: 10px;
+        width: auto; } }
   .anketa__basic {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -868,39 +870,43 @@ iframe {
     -webkit-box-direction: normal;
         -ms-flex-flow: row nowrap;
             flex-flow: row nowrap;
+    margin-bottom: 1px;
     padding: 0 19px 32px 20px;
-    background-color: #ffffff;
-    margin-bottom: 1px; }
+    background-color: #fff; }
+    @media (min-width: 768px) and (max-width: 1024px) {
+      .anketa__basic {
+        overflow: hidden; } }
     @media (max-width: 767px) {
       .anketa__basic {
+        overflow: hidden;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
             -ms-flex-flow: column nowrap;
                 flex-flow: column nowrap; } }
   .anketa__person-img {
+    position: relative;
     -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
-    width: 140px;
-    height: 140px;
-    border-radius: 50%;
     overflow: hidden;
-    margin-right: 21px;
     margin-top: 30px;
-    position: relative; }
+    margin-right: 21px;
+    border-radius: 50%;
+    width: 140px;
+    height: 140px; }
     .anketa__person-img picture {
-      display: block;
+      content: "";
       position: absolute;
-      content: '';
-      top: -20px;
       left: 0;
+      top: -20px;
+      display: block;
       width: 140px;
       height: 140px; }
   .anketa__approved-img {
+    content: "";
     position: absolute;
-    content: '';
-    top: 0;
     right: -300px;
+    top: 0;
     z-index: 5;
     opacity: 0;
     -webkit-transform: scale(2);
@@ -910,24 +916,23 @@ iframe {
     -o-transition: all 0.4s ease 0.2s;
     transition: all 0.4s ease 0.2s; }
     .anketa__approved-img.active {
-      -webkit-transform: scale(1);
-          -ms-transform: scale(1);
-              transform: scale(1);
       right: -16px;
       top: 73px;
-      opacity: 1; }
+      opacity: 1;
+      -webkit-transform: scale(1);
+          -ms-transform: scale(1);
+              transform: scale(1); }
       @media (max-width: 767px) {
         .anketa__approved-img.active {
           top: -100px; } }
   .anketa__skills {
-    padding: 34px 20px 0px 22px;
-    background-color: #ffffff;
-    margin-bottom: 1px; }
+    margin-bottom: 1px;
+    padding: 34px 20px 0 22px;
+    background-color: #fff; }
     @media (max-width: 767px) {
       .anketa__skills {
-        padding: 34px 10px 0px 10px; } }
+        padding: 34px 10px 0; } }
   .anketa__checkboxes-inner {
-    height: 176px;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -935,13 +940,14 @@ iframe {
     -webkit-box-direction: normal;
         -ms-flex-flow: column wrap;
             flex-flow: column wrap;
+    margin: 0;
     width: auto;
-    margin: 0; }
+    height: 176px; }
     @media (max-width: 767px) {
       .anketa__checkboxes-inner {
-        height: 400px;
+        margin: 0 auto;
         width: 300px;
-        margin: 0 auto; } }
+        height: 400px; } }
   .anketa__skill-label {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -950,29 +956,29 @@ iframe {
     -webkit-box-direction: normal;
         -ms-flex-flow: row nowrap;
             flex-flow: row nowrap;
-    width: 160px;
-    text-transform: uppercase;
-    letter-spacing: 1.2px;
+    margin-bottom: 37px;
     padding-top: 3px;
+    width: 160px;
     font-weight: 500;
-    margin-bottom: 37px; }
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    cursor: pointer; }
   .anketa__js {
-    padding: 59px 18px 0px 23px;
-    background-color: #ffffff;
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
     -webkit-box-orient: horizontal;
     -webkit-box-direction: normal;
         -ms-flex-flow: row nowrap;
-            flex-flow: row nowrap; }
+            flex-flow: row nowrap;
+    padding: 59px 18px 0 23px;
+    background-color: #fff; }
     .anketa__js h2 {
-      margin-bottom: 27px;
       margin-top: 7px;
+      margin-bottom: 27px;
       line-height: 130%; }
     @media (max-width: 767px) {
       .anketa__js {
-        padding: 30px 18px 0px 23px;
         -webkit-box-orient: vertical;
         -webkit-box-direction: normal;
             -ms-flex-flow: column nowrap;
@@ -980,47 +986,49 @@ iframe {
         -webkit-box-align: center;
             -ms-flex-align: center;
                 align-items: center;
+        padding: 30px 18px 0 23px;
         text-align: center; } }
   .anketa__js-img {
-    width: 320px;
+    position: relative;
     -webkit-box-flex: 0;
         -ms-flex: 0 0 auto;
             flex: 0 0 auto;
-    position: relative; }
-    .anketa__js-img input, .anketa__js-img label {
+    width: 320px; }
+    .anketa__js-img input,
+    .anketa__js-img label {
       margin-top: 40px; }
     @media (max-width: 767px) {
       .anketa__js-img {
-        width: auto;
-        margin-bottom: 25px; } }
+        margin-bottom: 25px;
+        width: auto; } }
   .anketa__js-scale {
-    width: 250px;
-    z-index: 0; }
+    z-index: 0;
+    width: 250px; }
   .anketa__js-arrow-box {
+    content: "";
     position: absolute;
-    content: '';
+    left: 65px;
+    top: 85px;
+    z-index: 1;
     width: 131px;
     height: 131px;
-    top: 85px;
-    left: 65px;
-    z-index: 1;
     -webkit-transform: rotate(40deg);
         -ms-transform: rotate(40deg);
             transform: rotate(40deg); }
   .anketa__js-arrow {
+    content: "";
     position: absolute;
-    content: '';
-    top: 0;
     left: 0;
+    top: 0;
     -webkit-transform: rotate(-75deg);
         -ms-transform: rotate(-75deg);
             transform: rotate(-75deg); }
   .anketa__js-counter {
-    font-size: 50px;
-    color: #0093d7;
-    line-height: 0.44;
     height: 100px;
-    font-weight: 700; }
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 0.44;
+    color: #0093d7; }
 
 .anketa__skill-label:nth-child(3n) {
   margin-bottom: 33px; }

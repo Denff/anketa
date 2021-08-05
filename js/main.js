@@ -168,112 +168,84 @@ if (document.querySelector('.anketa__js-counter')) {
   var blueColor = '#0093d7';
   var arrowNeedle = document.querySelector('.anketa__js-arrow');
   var approvedImg = document.querySelector('.anketa__approved-img');
-  var ch = document.querySelectorAll('.checkbox');
+  var checkboxes = document.querySelectorAll('.checkbox');
   var counterOut = document.querySelector('.anketa__js-counter');
-  var arr_1 = [];
-  var sumOut = 0;
+  var skills = [];
+  var sum = 0;
 
-  var sumArrElements = function sumArrElements(arr) {
+  var sumSkills = function sumSkills(arr) {
     var result = 0;
 
-    for (i = 0; i < arr.length; i++) {
+    for (var i = 0; i < arr.length; i++) {
       result += arr[i];
     }
 
     return result;
   };
 
-  var plusFunc = function plusFunc() {
-    var _loop = function _loop(_i) {
-      ch[_i].disabled = true;
+  var calculationsSkill = function calculationsSkill(elem) {
+    var _loop = function _loop(i) {
+      checkboxes[i].disabled = true;
       setTimeout(function () {
-        ch[_i].disabled = false;
+        checkboxes[i].disabled = false;
       }, 425);
     };
 
-    for (var _i in ch) {
-      _loop(_i);
+    for (var i = 0; i < checkboxes.length; i++) {
+      _loop(i);
+    }
+
+    if (sum < 0) {
+      return;
     }
 
     var interval = setInterval(function () {
-      sumOut = sumOut + 1;
-      var s = sumArrElements(arr_1);
+      var sumSkillsStop = 0;
 
-      if (sumOut <= 320) {
+      if (elem.target.checked) {
+        sum += 1;
+        sumSkillsStop = sumSkills(skills);
+      } else {
+        sum -= 1;
+        sumSkillsStop = skills.length > 0 ? sumSkills(skills) : 0;
+      }
+
+      if (sum <= 320) {
         counterOut.style.color = yellowColor;
-      } else if (sumOut >= 321 && sumOut <= 670) {
+      } else if (sum >= 321 && sum <= 670) {
         counterOut.style.color = greenColor;
-      } else if (sumOut >= 671) {
+      } else if (sum >= 671) {
         counterOut.style.color = blueColor;
       }
 
-      if (sumOut === s) {
+      if (sum === sumSkillsStop) {
         clearInterval(interval);
       }
 
-      arrowNeedle.style.transform = 'rotate(' + (285 + sumOut * 180 / 1008) + 'deg)';
-      counterOut.innerHTML = sumOut;
+      var degValue = 285 + sum * 180 / 1008;
+      arrowNeedle.style.transform = "rotate(".concat(degValue, "deg)");
+      counterOut.innerHTML = sum;
     }, 5);
   };
 
-  var minusFunc = function minusFunc() {
-    var _loop2 = function _loop2(_i2) {
-      ch[_i2].disabled = true;
-      setTimeout(function () {
-        ch[_i2].disabled = false;
-      }, 425);
-    };
-
-    for (var _i2 in ch) {
-      _loop2(_i2);
-    }
-
-    if (sumOut > 0) {
-      var interval = setInterval(function () {
-        sumOut = sumOut - 1;
-        var s;
-        arr_1.length ? s = sumArrElements(arr_1) : s = 0;
-
-        if (sumOut <= 320) {
-          counterOut.style.color = yellowColor;
-        } else if (sumOut >= 321 && sumOut <= 670) {
-          counterOut.style.color = greenColor;
-        } else if (sumOut >= 671) {
-          counterOut.style.color = blueColor;
-        }
-
-        if (sumOut === s) {
-          clearInterval(interval);
-        }
-
-        arrowNeedle.style.transform = 'rotate(' + (285 + sumOut * 180 / 1008) + 'deg)';
-        counterOut.innerHTML = sumOut;
-      }, 5);
-    }
-  };
-
-  var checkFunc = function checkFunc(elem) {
+  var checkSkill = function checkSkill(elem) {
     if (elem.target.checked) {
-      arr_1[arr_1.length] = 84;
-      plusFunc();
+      skills[skills.length] = 84;
+      calculationsSkill(elem);
     } else {
-      arr_1.pop();
-      minusFunc();
+      skills.pop();
+      calculationsSkill(elem);
     }
 
-    if (arr_1.length > 6) {
+    if (skills.length > 5) {
       approvedImg.classList.add('active');
     } else {
-      if (approvedImg.classList.contains('active')) {
-        approvedImg.classList.remove('active');
-      }
+      approvedImg.classList.remove('active');
     }
   };
 
-  var changeCheckState = ch.forEach(function (item) {
-    item.addEventListener('change', function (e) {
-      checkFunc(e);
-    });
+  checkboxes.forEach(function (item) {
+    item.addEventListener('change', checkSkill);
   });
 }
 
@@ -293,7 +265,7 @@ if (document.querySelector('.field-input')) {
       this.classList.add('active');
     });
     item.addEventListener('blur', function () {
-      if (this.value == "") {
+      if (this.value === '') {
         this.classList.remove('active');
       }
     });
@@ -391,31 +363,6 @@ function destroy() {
   closeMenu: closeMenu
 });
 /* WEBPACK VAR INJECTION */}.call(this, __webpack_require__(/*! ./../../../node_modules/timers-browserify/main.js */ "./node_modules/timers-browserify/main.js").setImmediate))
-
-/***/ }),
-
-/***/ "./src/js/components/skills.js":
-/*!*************************************!*\
-  !*** ./src/js/components/skills.js ***!
-  \*************************************/
-/*! no static exports found */
-/***/ (function(module, exports) {
-
-// if (document.querySelector('.anketa__skills')) {
-//     const checkboxesInner = document.querySelector('.anketa__checkboxes-inner');
-//     let checkboxes = [];
-//     for( let i = 0; i < checkboxes.length; i++) {
-//         checkboxes.length = 12;
-//         let label = document.createElement('label');
-//         label.classList.add('anketa__skill-label');
-//         let input = document.createElement('input');
-//         input.setAttribute('type', 'checkbox');
-//         input.classList.add('checkbox');
-//         label.appendChild(input)
-//         checkboxesInner.appendChild(label);
-//         checkboxes[i] = label[i];
-//     }
-// }
 
 /***/ }),
 
@@ -693,14 +640,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_form__WEBPACK_IMPORTED_MODULE_3___default = /*#__PURE__*/__webpack_require__.n(_components_form__WEBPACK_IMPORTED_MODULE_3__);
 /* harmony import */ var _components_counterSkills__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./components/counterSkills */ "./src/js/components/counterSkills.js");
 /* harmony import */ var _components_counterSkills__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_components_counterSkills__WEBPACK_IMPORTED_MODULE_4__);
-/* harmony import */ var _components_skills__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./components/skills */ "./src/js/components/skills.js");
-/* harmony import */ var _components_skills__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(_components_skills__WEBPACK_IMPORTED_MODULE_5__);
-/* harmony import */ var _vendor_ie_fix__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./vendor/ie-fix */ "./src/js/vendor/ie-fix.js");
-/* harmony import */ var _vendor_vh_fix__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./vendor/vh-fix */ "./src/js/vendor/vh-fix.js");
-/* harmony import */ var _modules_actualYear__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/actualYear */ "./src/js/modules/actualYear.js");
-/* harmony import */ var _modules_lazyLoading__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/lazyLoading */ "./src/js/modules/lazyLoading.js");
-/* harmony import */ var _modules_scrollToAnchor__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./modules/scrollToAnchor */ "./src/js/modules/scrollToAnchor.js");
-
+/* harmony import */ var _vendor_ie_fix__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./vendor/ie-fix */ "./src/js/vendor/ie-fix.js");
+/* harmony import */ var _vendor_vh_fix__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./vendor/vh-fix */ "./src/js/vendor/vh-fix.js");
+/* harmony import */ var _modules_actualYear__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./modules/actualYear */ "./src/js/modules/actualYear.js");
+/* harmony import */ var _modules_lazyLoading__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./modules/lazyLoading */ "./src/js/modules/lazyLoading.js");
+/* harmony import */ var _modules_scrollToAnchor__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./modules/scrollToAnchor */ "./src/js/modules/scrollToAnchor.js");
 
 
 
@@ -712,12 +656,12 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-Object(_vendor_ie_fix__WEBPACK_IMPORTED_MODULE_6__["ieFix"])();
-Object(_vendor_vh_fix__WEBPACK_IMPORTED_MODULE_7__["vhFix"])();
-Object(_modules_actualYear__WEBPACK_IMPORTED_MODULE_8__["actualYear"])();
-_modules_scrollToAnchor__WEBPACK_IMPORTED_MODULE_10__["default"].init(); // header.init();
+Object(_vendor_ie_fix__WEBPACK_IMPORTED_MODULE_5__["ieFix"])();
+Object(_vendor_vh_fix__WEBPACK_IMPORTED_MODULE_6__["vhFix"])();
+Object(_modules_actualYear__WEBPACK_IMPORTED_MODULE_7__["actualYear"])();
+_modules_scrollToAnchor__WEBPACK_IMPORTED_MODULE_9__["default"].init(); // header.init();
 
-_modules_lazyLoading__WEBPACK_IMPORTED_MODULE_9__["default"].init();
+_modules_lazyLoading__WEBPACK_IMPORTED_MODULE_8__["default"].init();
 
 /***/ }),
 
